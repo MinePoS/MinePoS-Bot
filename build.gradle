@@ -1,0 +1,30 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '2.0.2'
+}
+
+group 'me.piggypiglet.minepos'
+version '1.0.0'
+mainClassName = 'me.piggypiglet.minepos.bot.MinePoSBot'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'net.dv8tion:JDA:+'
+    compile 'com.google.inject:guice:+'
+    compile 'com.google.code.gson:gson:+'
+}
+
+shadowJar {
+    exclude 'META-INF/*.SF'
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+}
+
+compileJava.options.encoding = 'UTF-8'
