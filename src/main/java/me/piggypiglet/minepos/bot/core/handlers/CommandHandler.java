@@ -9,20 +9,27 @@ import me.piggypiglet.minepos.bot.core.utils.channel.MessageUtils;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
+import java.util.ArrayList;
+
 // ------------------------------
 // Copyright (c) PiggyPiglet 2018
 // https://www.piggypiglet.me
 // ------------------------------
 public class CommandHandler extends ListenerAdapter {
     @Inject private MessageUtils mutil;
-    public Command[] commands;
+    public ArrayList<Command> commands;
 
     public CommandHandler() {
         BinderModule module = new BinderModule(this.getClass());
         Injector injector = module.createInjector();
         injector.injectMembers(this);
+        commands = new ArrayList<Command>();
 
-        commands = new Command[] { new Help() };
+        new Help();
+    }
+
+    public void addCommand(Command cmd){
+        commands.add(cmd);
     }
 
     @Override

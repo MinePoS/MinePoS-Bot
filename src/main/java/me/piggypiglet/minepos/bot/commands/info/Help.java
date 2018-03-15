@@ -14,7 +14,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 // https://www.piggypiglet.me
 // ------------------------------
 public class Help extends Command {
-    @Inject private CommandHandler commandHandler;
+
 
     public Help() {
         super("?help","Display the MinePoS bot help message",false);
