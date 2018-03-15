@@ -2,6 +2,7 @@ package me.piggypiglet.minepos.bot;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import me.piggypiglet.minepos.bot.commands.info.Help;
 import me.piggypiglet.minepos.bot.core.framework.BinderModule;
 import me.piggypiglet.minepos.bot.core.handlers.CommandHandler;
 import me.piggypiglet.minepos.bot.core.objects.Config;
@@ -31,6 +32,12 @@ public class MinePoSBot {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        initCommands();
+    }
+
+    private void initCommands() {
+        new Help();
     }
 
     public static void main(String[] args) {

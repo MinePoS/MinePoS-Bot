@@ -24,8 +24,6 @@ public class CommandHandler extends ListenerAdapter {
         Injector injector = module.createInjector();
         injector.injectMembers(this);
         commands = new ArrayList<Command>();
-
-        new Help();
     }
 
     public void addCommand(Command cmd){
