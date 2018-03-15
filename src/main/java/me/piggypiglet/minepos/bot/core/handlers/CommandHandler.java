@@ -16,7 +16,7 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class CommandHandler extends ListenerAdapter {
     @Inject private MessageUtils mutil;
     @Inject private Help help;
-    private Command[] commands;
+    public Command[] commands;
 
     public CommandHandler() {
         BinderModule module = new BinderModule(this.getClass());

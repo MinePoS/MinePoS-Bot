@@ -1,5 +1,6 @@
 package me.piggypiglet.minepos.bot.core.framework;
 
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 // ------------------------------
@@ -8,22 +9,38 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 // ------------------------------
 public abstract class Command {
     private final String name;
+    private final String desc;
+    private final boolean admin;
 
     protected Command() {
-        this("null");
+        this("null","null",false);
     }
 
-    protected Command(String name) {
+    protected Command(String name, String desc, boolean admin) {
         this.name = name;
+        this.desc = desc;
+        this.admin = admin;
     }
 
     protected abstract void execute(MessageReceivedEvent e, String[] args);
 
     public void run(MessageReceivedEvent e, String[] args) {
-        execute(e, args);
+        if(admin){
+            if(e.getMember().hasPermission(Permission.ADMINISTRATOR)){
+                execute(e, args);
+            }
+        }else{
+            execute(e, args);
+        }
     }
 
     public String getName() {
         return name;
+    }
+    public String getDesc() {
+        return desc;
+    }
+    public boolean getAdmin() {
+        return admin;
     }
 }

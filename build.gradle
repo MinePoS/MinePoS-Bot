@@ -27,4 +27,17 @@ shadowJar {
     exclude 'META-INF/*.RSA'
 }
 
+task generateSources {
+    File outputDir = file("$buildDir/generated-src")
+    outputs.dir outputDir
+    doFirst {
+        outputDir.exists() || outputDir.mkdirs()
+        new File(outputDir, "me.piggypiglet.minepos.bot").write("public class MinePoSVersion { public static final String MinePoSVersion = \"$project.version\"; }")
+    }
+}
+
+compileJava.dependsOn generateSources
+compileJava.source generateSources.outputs.files, sourceSets.main.java
+
+
 compileJava.options.encoding = 'UTF-8'
