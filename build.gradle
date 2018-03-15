@@ -27,17 +27,7 @@ shadowJar {
     exclude 'META-INF/*.RSA'
 }
 
-task setVersionClass {
-    File outputDir = file("$buildDir/generated-src")
-    outputs.dir outputDir
-    doFirst {
-        outputDir.exists() || outputDir.mkdirs()
-        new File(outputDir, "MinePoSVersion.java").write("package me.piggypiglet.minepos.bot; public class MinePoSVersion { public static final String MinePoSVersion = \"$project.version\"; }")
-    }
-}
-
-compileJava.dependsOn setVersionClass
-compileJava.source setVersionClass.outputs.files, sourceSets.main.java
+compileJava.source sourceSets.main.java
 
 
 compileJava.options.encoding = 'UTF-8'

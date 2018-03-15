@@ -40,6 +40,9 @@ public class MinePoSBot {
         new Help();
     }
 
+    public String getVersion(){
+        return "here";
+    }
     public static void main(String[] args) {
         new MinePoSBot();
     }
