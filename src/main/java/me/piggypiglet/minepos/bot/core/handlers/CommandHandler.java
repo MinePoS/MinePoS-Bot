@@ -19,11 +19,18 @@ public class CommandHandler extends ListenerAdapter {
     @Inject private MessageUtils mutil;
     public ArrayList<Command> commands;
 
+    private static CommandHandler thisInstance;
+
+    public static CommandHandler getInstance() {
+        return thisInstance;
+    }
+
     public CommandHandler() {
         BinderModule module = new BinderModule(this.getClass());
         Injector injector = module.createInjector();
         injector.injectMembers(this);
         commands = new ArrayList<Command>();
+        thisInstance = this;
     }
 
     public void addCommand(Command cmd){

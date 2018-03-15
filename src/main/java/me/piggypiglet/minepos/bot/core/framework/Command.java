@@ -23,7 +23,7 @@ public abstract class Command {
         this.name = name;
         this.desc = desc;
         this.admin = admin;
-        commandHandler.addCommand(this);
+        CommandHandler.getInstance().addCommand(this);
     }
 
     protected abstract void execute(MessageReceivedEvent e, String[] args);
