@@ -22,7 +22,7 @@ public class Help extends Command {
     public void execute(MessageReceivedEvent e, String[] args) {
         boolean isAdmin = e.getMember().hasPermission(Permission.ADMINISTRATOR);
         String helpMessage = "";
-        for(Command command : commandHandler.commands){
+        for(Command command : CommandHandler.getInstance().commands){
             if(command.getAdmin()){
                 if(isAdmin){
                     helpMessage += command.getName()+" - "+command.getDesc();
