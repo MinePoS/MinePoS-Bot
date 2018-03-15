@@ -32,7 +32,7 @@ task setVersionClass {
     outputs.dir outputDir
     doFirst {
         outputDir.exists() || outputDir.mkdirs()
-        new File(outputDir, "me.piggypiglet.minepos.bot.MinePoSVersion.java").write("package me.piggypiglet.minepos.bot; public class MinePoSVersion { public static final String MinePoSVersion = \"$project.version\"; }")
+        new File(outputDir, "MinePoSVersion.java").write("package me.piggypiglet.minepos.bot; public class MinePoSVersion { public static final String MinePoSVersion = \"$project.version\"; }")
     }
 }
 
