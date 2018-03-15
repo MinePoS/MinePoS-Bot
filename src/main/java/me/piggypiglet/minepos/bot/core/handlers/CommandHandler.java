@@ -15,7 +15,6 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 // ------------------------------
 public class CommandHandler extends ListenerAdapter {
     @Inject private MessageUtils mutil;
-    @Inject private Help help;
     public Command[] commands;
 
     public CommandHandler() {
@@ -23,7 +22,7 @@ public class CommandHandler extends ListenerAdapter {
         Injector injector = module.createInjector();
         injector.injectMembers(this);
 
-        commands = new Command[] { help };
+        commands = new Command[] { new Help() };
     }
 
     @Override

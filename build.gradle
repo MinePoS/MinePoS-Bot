@@ -27,7 +27,7 @@ shadowJar {
     exclude 'META-INF/*.RSA'
 }
 
-task generateSources {
+task setVersionClass {
     File outputDir = file("$buildDir/generated-src")
     outputs.dir outputDir
     doFirst {
@@ -36,8 +36,8 @@ task generateSources {
     }
 }
 
-compileJava.dependsOn generateSources
-compileJava.source generateSources.outputs.files, sourceSets.main.java
+compileJava.dependsOn setVersionClass
+compileJava.source setVersionClass.outputs.files, sourceSets.main.java
 
 
 compileJava.options.encoding = 'UTF-8'
