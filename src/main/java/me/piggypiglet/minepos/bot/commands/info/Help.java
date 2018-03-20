@@ -1,5 +1,6 @@
 package me.piggypiglet.minepos.bot.commands.info;
 
+import com.google.api.services.dialogflow.v2beta1.Dialogflow;
 import com.google.inject.Inject;
 import me.piggypiglet.minepos.bot.core.framework.Command;
 import me.piggypiglet.minepos.bot.core.handlers.CommandHandler;
@@ -25,16 +26,19 @@ public class Help extends Command {
         for(Command command : CommandHandler.getInstance().commands){
             if(command.getAdmin()){
                 if(isAdmin){
-                    helpMessage += command.getName()+" - "+command.getDesc();
+                    helpMessage += command.getName()+" - "+command.getDesc()+System.lineSeparator();
                 }
             }else{
-                helpMessage += command.getName()+" - "+command.getDesc();
+                helpMessage += command.getName()+" - "+command.getDesc()+System.lineSeparator();
+
             }
         }
 
         MessageEmbed embed = new EmbedBuilder()
                 .setAuthor(e.getAuthor().getName(),null,e.getAuthor().getAvatarUrl())
-                .setDescription(helpMessage).setTitle("MinePoS Bot").build();
+                .setDescription(helpMessage)
+                .setFooter("MinePoS Bot",null)
+                .build();
         e.getChannel().sendMessage(embed).queue();
     }
 }
