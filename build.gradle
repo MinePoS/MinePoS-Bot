@@ -19,7 +19,7 @@ dependencies {
     compile 'net.dv8tion:JDA:+'
     compile 'com.google.inject:guice:+'
     compile 'com.google.code.gson:gson:+'
-    compile 'com.google.apis:google-api-services-dialogflow:v2beta1-rev18-1.23.0'
+    compile 'ai.api:libai:1.6.12'
 }
 
 shadowJar {
